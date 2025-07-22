@@ -45,7 +45,9 @@ class TestSmokeTest():
   def test_3DirectoryPageTest(self):
     self.driver.get("https://michaelnorton-byui.github.io/cse270-teton/")
     self.driver.set_window_size(1200, 800)
-    self.driver.find_element(By.LINK_TEXT, "Directory").click()
+    WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Directory"))
+    ).click()
     self.driver.find_element(By.ID, "directory-grid").click()
     elements = self.driver.find_elements(By.CSS_SELECTOR, ".gold-member:nth-child(9) > p:nth-child(2)")
     assert len(elements) > 0

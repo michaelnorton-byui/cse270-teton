@@ -71,7 +71,10 @@ class TestSmokeTest():
   def test_5AdminPageTest(self):
     self.driver.get("https://michaelnorton-byui.github.io/cse270-teton/")
     self.driver.set_window_size(1200, 800)
-    self.driver.find_element(By.LINK_TEXT, "Admin").click()
+    WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Admin"))
+    ).click()
+    
     elements = self.driver.find_elements(By.ID, "username")
     assert len(elements) > 0
     self.driver.find_element(By.ID, "username").send_keys("incorrect")

@@ -56,7 +56,7 @@ class TestSmokeTest():
   def test_4JoinPageTest(self):
     self.driver.get("https://michaelnorton-byui.github.io/cse270-teton/")
     self.driver.set_window_size(1200, 800)
-    self.driver.find_element(By.LINK_TEXT, "Join").click()
+    self.driver.find_element(By.LINK_TEXT, "Join Us").click()
     elements = self.driver.find_elements(By.NAME, "fname")
     assert len(elements) > 0
     self.driver.find_element(By.NAME, "fname").send_keys("Michael")
